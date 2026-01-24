@@ -25,7 +25,7 @@ jobs:
       run: |
         D:
         cd D:\GitHub_\sprintboot_maven
-        C:\tools\apache-maven-3.9.12\bin\mvn.cmd -B clean package --file pom.xml
+        mvn -B clean package --file pom.xml
 
     - name: Login to Azure Container Registry
       uses: docker/login-action@v3
