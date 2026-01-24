@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: C:\tools\apache-maven-3.9.12\bin\mvn.cmd -B package --file pom.xml
+      run: .\mvn.cmd -B package --file pom.xml
 
     - name: Login to Azure Container Registry
       uses: docker/login-action@v3
