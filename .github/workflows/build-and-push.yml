@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: [self-hosted, windows]
+    runs-on: [self-hosted, windows-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -21,6 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      shell: cmd
       run: mvn.cmd -B package --file pom.xml
 
     - name: Login to Azure Container Registry
