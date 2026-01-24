@@ -20,12 +20,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
     - name: Build with Maven
       shell: cmd
-      run: |
-        D:
-        cd D:\GitHub_\sprintboot_maven
-        mvn -B clean package --file pom.xml
+      run: mvn -B clean package --file pom.xml
 
     - name: Login to Azure Container Registry
       uses: docker/login-action@v3
