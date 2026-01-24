@@ -32,7 +32,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build \
+        docker build `
           -t ${{ secrets.ACR_LOGIN_SERVER }}/springboot-app:${{ github.sha }} \
           -t ${{ secrets.ACR_LOGIN_SERVER }}/springboot-app:latest \
           .
