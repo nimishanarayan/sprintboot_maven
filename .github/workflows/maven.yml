@@ -29,10 +29,9 @@ jobs:
           distribution: temurin
           cache: maven
 
-      - name: Set Maven repo path
+      - name: Set Maven local repo
+        run: Add-Content -Path $env:GITHUB_ENV -Value "MAVEN_OPTS=-Dmaven.repo.local=D:/actions-runner/.m2"
         shell: powershell
-        run: |
-          Add-Content -Path $env:GITHUB_ENV -Value "MAVEN_OPTS=-Dmaven.repo.local=D:/actions-runner/.m2"
 
       - name: Cache Maven repo
         uses: actions/cache@v4
