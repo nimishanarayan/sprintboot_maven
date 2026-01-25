@@ -32,7 +32,9 @@ jobs:
           server-id: github
           
       - name: Set Maven repo path
-        run: echo "MAVEN_OPTS=-Dmaven.repo.local=D:\actions-runner\.m2" >> $GITHUB_ENV
+        shell: powershell
+        run: |
+          "MAVEN_OPTS=-Dmaven.repo.local=D:/actions-runner/.m2" >> $env:GITHUB_ENV
         
       - name: Cache Maven packages
         uses: actions/cache@v4
