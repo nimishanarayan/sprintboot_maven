@@ -30,7 +30,17 @@ jobs:
           distribution: 'temurin'
           cache: maven
           server-id: github
-
+          
+      - name: Set Maven repo path
+        run: echo "MAVEN_OPTS=-Dmaven.repo.local=D:\actions-runner\.m2" >> $GITHUB_ENV
+        
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: D:\actions-runner\.m2
+          key: maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-
+            
       - name: Build with Maven
-        run: C:\tools\apache-maven-3.9.12\bin\mvn.cmd -B clean package
-
+        run: mvn -B clean package
