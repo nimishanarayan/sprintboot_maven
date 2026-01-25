@@ -3,8 +3,6 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "springboot3" ]
-  pull_request:
-    branches: [ "springboot3" ]
   workflow_dispatch:
 
 jobs:
