@@ -1,7 +1,7 @@
 # Stage 1: Build JAR
 FROM maven:3.9.4-eclipse-temurin-17 AS build
 
-WORKDIR /app
+WORKDIR /sprintboot_maven
 
 # Copy Maven config first to cache dependencies
 COPY pom.xml .
@@ -16,10 +16,10 @@ RUN mvn clean package -DskipTests
 # Stage 2: Runtime image
 FROM eclipse-temurin:17-jre
 
-WORKDIR /app
+WORKDIR /sprintboot_maven
 
 # Copy built JAR from build stage
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /sprintboot_maven/target/*.jar app.jar
 
 EXPOSE 8080
 
