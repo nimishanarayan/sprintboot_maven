@@ -18,19 +18,20 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, windows]
+    defaults:
+      run:
+        shell: powershell
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up JDK 17 with Maven cache
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: 17
+          distribution: temurin
           cache: maven
-          server-id: github
 
       - name: Build with Maven
-        run: C:\Users\nimis\Downloads\apache-maven-3.9.12-bin.zip\apache-maven-3.9.12\bin\mvn.cmd -B clean package
+        run: C:\tools\apache-maven-3.9.12\bin\mvn.cmd -B clean package
 
