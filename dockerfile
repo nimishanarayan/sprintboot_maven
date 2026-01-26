@@ -1,9 +1,25 @@
+# Stage 1: Build JAR
+FROM maven:3.9.4-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+# Copy Maven config first to cache dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy source code
+COPY src ./src
+
+# Build JAR
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime image
 FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-# Copy the jar built by Maven
-COPY target/*.jar app.jar
+# Copy built JAR from build stage
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
