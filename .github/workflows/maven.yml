@@ -32,5 +32,5 @@ jobs:
           server-id: github
 
       - name: Build with Maven
-        run: C:\tools\apache-maven-3.9.12\bin\mvn.cmd -B clean package
+        run: C:\Users\nimis\Downloads\apache-maven-3.9.12-bin.zip\apache-maven-3.9.12\bin\mvn.cmd -B clean package
 
