@@ -10,7 +10,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build JAR
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dspring-javaformat.skip=true
 
 # Stage 2: Runtime image
 FROM eclipse-temurin:17-jre
