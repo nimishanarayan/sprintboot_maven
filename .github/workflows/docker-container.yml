@@ -2,8 +2,10 @@ name: Build Maven Docker and Push to ACR
 
 on:
   push:
-    branches:
-      - main  # Change if needed
+    branches: [ "springboot3" ]
+  pull_request:
+    branches: [ "springboot3" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -26,7 +28,7 @@ jobs:
       # 3️⃣ Login to ACR
       - name: Login to ACR
         run: |
-          az acr login --name springbootappmaven  # Replace 'springbootappmaven' with your ACR name
+          az acr login --name springbootappmaven
 
       # 4️⃣ Set Docker image tag as commit SHA
       - name: Set Docker Image Tag
