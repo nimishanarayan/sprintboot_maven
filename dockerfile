@@ -5,9 +5,6 @@ WORKDIR /sprintboot_maven
 
 # Copy Maven config first to cache dependencies
 COPY pom.xml .
-RUN mvn -B -q dependency:resolve dependency:resolve-plugins \
-    -Dmaven.wagon.http.retryHandler.count=5 \
-    -Dmaven.wagon.http.pool=false
 
 # Copy source code
 COPY src ./src
