@@ -57,7 +57,6 @@ jobs:
           docker tag springbootdemoimage:latest springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }}
           docker push springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }}
 
-
       - name: Set AKS Context
         uses: azure/aks-set-context@v3
         with:
@@ -66,7 +65,7 @@ jobs:
 
       - name: Update Image Tag
         run: |
-            sed -i "s|springbootdemoimage:latest|springboot-app:${{ github.sha }}|g" k8s-deployment.yaml
+            sed -i "s|springbootdemoimage:latest|springbootdemoimage:${{ github.sha }}|g" k8s-deployment.yaml
 
       - name: Deploy to AKS
         run: kubectl apply -f k8s-deployment.yaml

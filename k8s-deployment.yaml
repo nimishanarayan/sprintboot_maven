@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: springboot
-        image: springbootappmaven.azurecr.io/springboot-app:latest
+        image: springbootappmaven.azurecr.io/springbootdemoimage:latest
         ports:
         - containerPort: 8080
 ---
