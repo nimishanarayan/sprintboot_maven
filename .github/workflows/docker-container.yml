@@ -1,10 +1,10 @@
 name: Build Maven Docker and Push to ACR
 
 on:
-  push:
-    branches: [ "springboot3" ]
-  pull_request:
-    branches: [ "springboot3" ]
+  #push:
+  #  branches: [ "springboot3" ]
+  #pull_request:
+  #  branches: [ "springboot3" ]
   workflow_dispatch:
 
 jobs:
