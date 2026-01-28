@@ -41,3 +41,16 @@ jobs:
       # 6️⃣ Push Docker image to ACR
       - name: Push Docker Image
         run: docker push springbootappmaven.azurecr.io/springbootimage:${{ github.sha }}
+
+      - name: Set AKS Context
+        uses: azure/aks-set-context@v3
+        with:
+            resource-group: ${{ secrets.AKS_RG }}
+            cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
+
+      - name: Update Image Tag
+        run: |
+            sed -i "s|springboot-app:latest|springboot-app:${{ github.sha }}|g" k8s-deployment.yaml
+
+      - name: Deploy to AKS
+        run: kubectl apply -f k8s-deployment.yaml
