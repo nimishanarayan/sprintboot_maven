@@ -49,13 +49,13 @@ jobs:
           az acr login --name springbootappmaven
 
       - name: Build Docker Image
-        run: |
-          docker build -t springbootappmaven.azurecr.io/springbootdemoimage:latest .
+        run: docker build -t springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }} .
 
       - name: Push image
         run: |
-          docker tag springbootdemoimage:latest springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }}
           docker push springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }}
+          docker tag springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }} springbootappmaven.azurecr.io/springbootdemoimage:latest
+          docker push springbootappmaven.azurecr.io/springbootdemoimage:latest
 
       - name: Set AKS Context
         uses: azure/aks-set-context@v3
