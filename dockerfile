@@ -18,7 +18,7 @@ FROM eclipse-temurin:17-jre
 WORKDIR /sprintboot_maven
 
 # Copy built JAR from build stage
-COPY --from=build /sprintboot_maven/target/*.jar app.jar
+COPY --from=build /sprintboot_maven/target/springbootdemo-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
