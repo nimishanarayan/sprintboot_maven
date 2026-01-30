@@ -47,7 +47,13 @@ jobs:
       - name: Login to ACR
         run: |
           az acr login --name springbootappmaven
-          
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build and Push Docker Image
         run: |
           docker buildx build \
