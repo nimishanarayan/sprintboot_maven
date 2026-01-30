@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests -Dspring-javaformat.skip=true
 
 # Stage 2: Runtime image
-FROM eclipse-temurin:17-jre
+FROM openjdk:17-jdk-slim
 
 WORKDIR /sprintboot_maven
 
