@@ -47,10 +47,10 @@ jobs:
       - name: Login to ACR
         run: |
           az acr login --name springbootappmaven
-          
+
       - name: Build Docker Image
         run: |
-          docker buildx build --platform linux/amd64 -t springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }} .
+          docker buildx build --platform linux/arm64 -t springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }} .
           docker tag springbootappmaven.azurecr.io/springbootdemoimage:${{ github.sha }} springbootappmaven.azurecr.io/springbootdemoimage:latest
 
       - name: Push image
