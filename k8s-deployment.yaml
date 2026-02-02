@@ -17,6 +17,18 @@ spec:
         image: springbootappmaven.azurecr.io/springbootdemoimage:latest
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: secrets-store
+          mountPath: "/mnt/secrets"
+          readOnly: true
+          
+volumes:
+- name: secret-store
+  csi:
+    driver: secrets-store
+    readOnly: true
+    volumeAttributes: 
+      SecretProviderClass: azure-kv        
 ---
 apiVersion: v1
 kind: Service
